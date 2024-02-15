@@ -1,13 +1,32 @@
 from django.shortcuts import render
 from .models import Estudiante, Docente
 
-def ejemplo_vista(request):
-    # Crear una instancia de Estudiante
-    estudiante = Estudiante(nombre='Juan', apellido='Pérez', numero_cedula='123456789')
-    respuesta_estudiante = estudiante.responder_lista()
 
-    # Crear una instancia de Docente
-    docente = Docente(nombre='Profesor', apellido='Gómez', numero_cedula='987654321')
-    respuesta_docente = docente.tomar_lista()
+def home(request):
+    return render(request, 'app/home/home.html')
 
-    return render(request, 'app/home.html', {'respuesta_estudiante': respuesta_estudiante, 'respuesta_docente': respuesta_docente})
+def estudiante(request):
+    estudiantes = Estudiante.objects.all()
+    return render(request, 'app/home/estudiantes.html', {'estudiantes': estudiantes})
+
+def docente(request):
+    docentes = Docente.objects.all()
+    return render(request, 'app/home/profesores.html', {'docentes': docentes})
+
+def tomar_asistencia(request):
+    estudiantes = Estudiante.objects.all()
+    docente = Docente.objects.first()  # Obtén el primer docente, puedes modificar esto según tus necesidades
+    context = {
+        'estudiantes': estudiantes,
+        'docente': docente,
+    }
+    return render(request, 'app/home/tomarLista.html' , context)
+
+def curso(request):
+    return render(request, 'app/home/paralelos.html')
+
+
+
+
+
+

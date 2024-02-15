@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'app/css/inicio.css' %}">
+    <title>asistencias</title>
+</head>
+<body>
+    <div class="padre">
+        <div class="titulo">
+            <h1>Aplicacion para toma de asistencias</h1>
+        </div>
+        <div class="contenedor">
+            <div class="menu">
+                <ul>
+                    <li><a href="{%url 'profesores'%}">Profesores</a></li>
+                    <li><a href="{% url 'tomarLista' %}">Asistencias</a></li>
+                    <li><a href="{%url 'estudiantes'%}">Alumnos</a></li>
+                    <li><a href="{url 'paralelos'}">Cursos</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
